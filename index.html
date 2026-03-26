@@ -154,24 +154,6 @@
       position: relative;
       overflow: hidden;
     }
-    .hero .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 56px;
-    }
-    .hero-photo {
-      position: relative;
-      z-index: 1;
-    }
-    .hero-photo img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: block;
-      transform: rotate(1.5deg);
-    }
     .hero::before {
       content: '';
       position: absolute;
@@ -191,6 +173,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
+      max-width: 700px;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -232,6 +215,7 @@
     .hero p {
       font-size: 1.15rem;
       color: rgba(255,255,255,0.72);
+      max-width: 540px;
       margin-bottom: 40px;
     }
     .hero-actions {
@@ -241,10 +225,10 @@
       align-items: center;
     }
     .hero-meta {
-      margin-top: 48px;
+      margin-top: 60px;
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      gap: 16px;
+      flex-wrap: nowrap;
     }
     .hero-meta-item {
       display: flex;
@@ -820,12 +804,6 @@
         grid-template-columns: 1fr 1fr;
       }
     }
-    @media (max-width: 900px) {
-      .hero .container {
-        grid-template-columns: 1fr;
-      }
-      .hero-photo { display: none; }
-    }
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .steps,
@@ -835,9 +813,13 @@
       .hero {
         padding-top: 110px;
         padding-bottom: 80px;
+        align-items: flex-start;
       }
       .hero-meta {
-        margin-top: 32px;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        margin-bottom: 20px;
       }
       .event-info { padding: 36px 28px; }
       .speakers-header { flex-direction: column; align-items: flex-start; }
@@ -868,7 +850,6 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-
         <div class="hero-eyebrow">Monthly Networking · Denver, CO</div>
         <h1>Grow Your Network.<br /><em>Elevate Your Career.</em></h1>
         <p>
@@ -900,15 +881,11 @@
           <div class="hero-meta-item">
             <div class="icon">🎤</div>
             <div>
-              <strong>Featured Speaker</strong>
-              New presenter each month
+              <strong>Dustin Evans</strong>
+              Mortgage &amp; Homebuying Expert
             </div>
           </div>
         </div>
-      </div>
-      <div class="hero-photo">
-        <img src="assets/venue-1.png" alt="Upward Denver at Number Thirty Eight"
-             onerror="this.parentElement.style.display='none'" />
       </div>
     </div>
     <!-- Multi-layer SVG mountain range -->
@@ -929,11 +906,11 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image">
-          <img src="assets/event-1.png" alt="Upward Denver networking event"
+          <img src="assets/venue-1.png" alt="Number Thirty Eight venue"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <div class="about-image-placeholder" style="display:none">
             <span class="ph-icon">🖼</span>
-            <span>Upload <strong>event-1.png</strong> to the assets/ folder</span>
+            <span>Upload <strong>venue-1.png</strong> to the assets/ folder</span>
           </div>
         </div>
         <div class="about-text">
@@ -1103,24 +1080,25 @@
         <a href="https://www.meetup.com/denver-young-professionals-meetup-group-wdhksqvc/" target="_blank" rel="noopener" class="btn btn-coral">See All Events →</a>
       </div>
       <div class="speakers-grid">
-        <!-- Speaker Card — Coming Soon -->
+        <!-- Dustin Evans — April speaker -->
         <div class="speaker-card">
           <div class="speaker-photo">
-            <div class="speaker-photo-placeholder">
+            <img src="assets/dustin.png" alt="Dustin Evans"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="speaker-photo-placeholder" style="display:none">
               <span class="ph-icon">👤</span>
             </div>
-            <span class="speaker-tag">Next Up</span>
+            <span class="speaker-tag">April 29</span>
           </div>
-          <div class="speaker-body speaker-tba">
-            <h3>Speaker TBA</h3>
-            <div class="speaker-role">Coming Next Month</div>
-            <div class="speaker-date">Check Meetup for updates</div>
+          <div class="speaker-body">
+            <h3>Dustin Evans</h3>
+            <div class="speaker-role">Mortgage &amp; Homebuying Expert</div>
+            <div class="speaker-date" style="margin-bottom:10px;">Fireside chat on Denver homebuying myths, what's actually possible, and when to start thinking about it.</div>
+            <a href="https://www.instagram.com/dustinevansmortgage?igsh=MTBkZXhmZXJtZ3Rkbg==" target="_blank" rel="noopener" style="font-size:0.8rem;color:var(--coral);font-weight:600;">@dustinevansmortgage →</a>
           </div>
         </div>
-        <!-- Add past speaker cards here as your group grows -->
         <div class="speaker-card">
           <div class="speaker-photo">
-            <!-- Replace with speaker photo: <img src="assets/speaker-NAME.jpg" alt="Speaker Name" /> -->
             <div class="speaker-photo-placeholder">
               <span class="ph-icon">👤</span>
             </div>
