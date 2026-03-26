@@ -93,9 +93,10 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(44, 62, 80, 0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(61,81,102,0.1);
+      box-shadow: 0 2px 20px rgba(61,81,102,0.08);
     }
     .nav-inner {
       display: flex;
@@ -109,14 +110,13 @@
       gap: 12px;
     }
     .nav-logo img {
-      height: 38px;
+      height: 42px;
       width: auto;
-      /* Placeholder shown if image missing */
     }
     .nav-logo-text {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--slate-dark);
       letter-spacing: 0.02em;
     }
     .nav-logo-text span { color: var(--coral); }
@@ -129,10 +129,10 @@
     .nav-links a {
       font-size: 0.9rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.75);
+      color: var(--slate-light);
       transition: color 0.15s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--slate-dark); }
     .nav-cta {
       background: var(--coral);
       color: var(--white) !important;
@@ -158,17 +158,16 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(232, 96, 76, 0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,255,255,0.03) 0%, transparent 70%);
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(232, 96, 76, 0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(255,255,255,0.04) 0%, transparent 70%);
     }
-    /* Decorative mountain silhouette */
-    .hero::after {
-      content: '';
+    /* SVG mountain layers sit above ::before */
+    .hero-mountains {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 180px;
-      background: linear-gradient(to top, rgba(0,0,0,0.18), transparent);
-      clip-path: polygon(0 100%, 15% 40%, 28% 65%, 42% 20%, 55% 55%, 68% 30%, 80% 60%, 92% 38%, 100% 55%, 100% 100%);
+      width: 100%;
+      pointer-events: none;
+      display: block;
     }
     .hero-content {
       position: relative;
@@ -233,18 +232,24 @@
     .hero-meta-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: rgba(255,255,255,0.6);
+      gap: 12px;
+      color: rgba(255,255,255,0.7);
       font-size: 0.9rem;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 12px;
+      padding: 12px 16px;
     }
     .hero-meta-item .icon {
       width: 36px; height: 36px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
+      flex-shrink: 0;
     }
     .hero-meta-item strong {
       display: block;
@@ -334,49 +339,78 @@
 
     /* ─── How it Works ───────────────────────────────────────── */
     .how-it-works {
-      padding: 96px 0;
-      background: var(--off-white);
+      padding: 96px 0 112px;
+      background: linear-gradient(160deg, var(--slate-dark) 0%, var(--slate) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Mountain wave at top of section */
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: 0; right: 0;
+      height: 80px;
+      background: var(--white);
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 85% 60%, 72% 35%, 58% 70%, 44% 30%, 30% 65%, 16% 38%, 0 55%);
+    }
+    /* Subtle mountain texture in background */
+    .how-it-works::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 260px;
+      background: rgba(0,0,0,0.15);
+      clip-path: polygon(0 100%, 0 55%, 12% 35%, 24% 60%, 36% 25%, 48% 55%, 60% 20%, 72% 50%, 84% 30%, 96% 52%, 100% 38%, 100% 100%);
+      pointer-events: none;
     }
     .how-header {
       text-align: center;
       margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
     }
     .how-header .section-sub {
       margin: 16px auto 0;
+      color: rgba(255,255,255,0.65);
     }
+    .how-header .section-heading { color: var(--white); }
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
     }
     .step {
-      background: var(--white);
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(14px);
       border-radius: 16px;
       padding: 36px 28px;
-      border: 1px solid var(--gray-300);
+      border: 1px solid rgba(255,255,255,0.12);
       position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
     .step:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(61, 81, 102, 0.12);
+      background: rgba(255,255,255,0.11);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
     }
     .step-number {
       font-size: 3rem;
       font-weight: 800;
-      color: rgba(232, 96, 76, 0.12);
+      color: rgba(232, 96, 76, 0.35);
       line-height: 1;
       margin-bottom: 16px;
     }
     .step h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--slate-dark);
+      color: var(--white);
       margin-bottom: 10px;
     }
     .step p {
       font-size: 0.9rem;
-      color: var(--gray-600);
+      color: rgba(255,255,255,0.65);
     }
 
     /* ─── Next Event ─────────────────────────────────────────── */
@@ -539,7 +573,7 @@
     /* ─── CTA Banner ─────────────────────────────────────────── */
     .cta-banner {
       background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
-      padding: 80px 0;
+      padding: 100px 0 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -549,6 +583,15 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 70%);
+    }
+    /* Mountain silhouette at top of CTA */
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      top: -2px; left: 0; right: 0;
+      height: 80px;
+      background: var(--off-white);
+      clip-path: polygon(0 0, 100% 0, 100% 15%, 92% 55%, 80% 28%, 68% 62%, 55% 22%, 42% 58%, 30% 28%, 18% 65%, 6% 35%, 0 50%);
     }
     .cta-banner .container { position: relative; }
     .cta-banner h2 {
@@ -609,7 +652,19 @@
     /* ─── Photo Gallery ─────────────────────────────────────── */
     .gallery {
       padding: 96px 0;
-      background: var(--white);
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Mountain decoration behind gallery */
+    .gallery::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: rgba(61,81,102,0.04);
+      clip-path: polygon(0 100%, 0 60%, 14% 38%, 26% 62%, 40% 32%, 52% 58%, 65% 24%, 78% 52%, 90% 36%, 100% 54%, 100% 100%);
+      pointer-events: none;
     }
     .gallery-header {
       text-align: center;
@@ -627,6 +682,11 @@
       border-radius: 12px;
       background: var(--gray-100);
       cursor: pointer;
+      box-shadow: 0 4px 16px rgba(61,81,102,0.08);
+      transition: box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      box-shadow: 0 8px 32px rgba(61,81,102,0.18);
     }
     .gallery-item:first-child {
       grid-column: 1 / 3;
@@ -776,6 +836,17 @@
         </div>
       </div>
     </div>
+    <!-- Multi-layer SVG mountain range -->
+    <svg class="hero-mountains" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <!-- Far range — faintest -->
+      <path d="M0,220 L0,160 L90,120 L180,145 L270,90 L360,118 L450,72 L540,100 L630,58 L720,88 L810,50 L900,78 L990,55 L1080,82 L1170,62 L1260,95 L1350,72 L1440,105 L1440,220 Z" fill="rgba(255,255,255,0.04)"/>
+      <!-- Mid range -->
+      <path d="M0,220 L0,175 L110,138 L210,162 L320,110 L420,148 L530,98 L630,135 L730,88 L840,125 L940,95 L1040,130 L1140,102 L1250,140 L1350,112 L1440,148 L1440,220 Z" fill="rgba(255,255,255,0.06)"/>
+      <!-- Near range — coral tint -->
+      <path d="M0,220 L0,195 L130,160 L230,185 L350,142 L450,178 L570,132 L670,172 L770,138 L880,175 L980,148 L1080,182 L1180,155 L1300,188 L1440,165 L1440,220 Z" fill="rgba(232,96,76,0.08)"/>
+      <!-- Ground layer -->
+      <path d="M0,220 L0,208 L1440,208 L1440,220 Z" fill="rgba(0,0,0,0.15)"/>
+    </svg>
   </section>
 
   <!-- ─── About ─────────────────────────────────────────────── -->
