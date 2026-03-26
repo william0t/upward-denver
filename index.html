@@ -146,10 +146,13 @@
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--slate-dark) 0%, var(--slate) 100%);
+      background:
+        linear-gradient(135deg, rgba(28,42,54,0.90) 0%, rgba(50,72,92,0.82) 100%),
+        url('assets/venue-1.png') center / cover no-repeat;
       display: flex;
       align-items: center;
       padding-top: 86px;
+      padding-bottom: 60px;
       position: relative;
       overflow: hidden;
     }
@@ -598,23 +601,57 @@
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .cta-banner p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: rgba(255,255,255,0.82);
-      max-width: 500px;
-      margin: 0 auto 36px;
+      max-width: 480px;
+      margin: 0 auto 48px;
     }
     .cta-banner .btn-outline {
       border-color: rgba(255,255,255,0.6);
     }
+    .cta-stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .cta-stat {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 14px;
+      padding: 20px 28px;
+      min-width: 160px;
+      text-align: center;
+    }
+    .cta-stat-num {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .cta-stat-label {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.72);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+    }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     footer {
-      background: var(--slate-dark);
-      color: rgba(255,255,255,0.55);
-      padding: 48px 0 32px;
+      background: var(--white);
+      color: var(--gray-600);
+      padding: 52px 0 32px;
+      border-top: 1px solid var(--gray-300);
     }
     .footer-inner {
       display: flex;
@@ -622,31 +659,32 @@
       justify-content: space-between;
       gap: 24px;
       flex-wrap: wrap;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--gray-300);
       margin-bottom: 24px;
     }
     .footer-logo-text {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--slate-dark);
     }
     .footer-logo-text span { color: var(--coral); }
     .footer-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       list-style: none;
       flex-wrap: wrap;
     }
     .footer-links a {
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.55);
+      color: var(--gray-600);
       transition: color 0.15s;
     }
-    .footer-links a:hover { color: var(--white); }
+    .footer-links a:hover { color: var(--slate-dark); }
     .footer-bottom {
       text-align: center;
       font-size: 0.8rem;
+      color: var(--gray-600);
     }
 
     /* ─── Photo Gallery ─────────────────────────────────────── */
@@ -774,7 +812,17 @@
       .speakers-grid {
         grid-template-columns: 1fr;
       }
-      .hero-meta { gap: 10px; flex-wrap: wrap; }
+      .hero {
+        padding-top: 110px;
+        padding-bottom: 80px;
+        align-items: flex-start;
+      }
+      .hero-meta {
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
       .event-info { padding: 36px 28px; }
       .speakers-header { flex-direction: column; align-items: flex-start; }
     }
@@ -1084,7 +1132,25 @@
   <section class="cta-banner">
     <div class="container">
       <h2>Ready to Move Upward?</h2>
-      <p>Join Denver's community of ambitious young professionals. Your next great connection is one RSVP away.</p>
+      <p>Denver's community for ambitious young professionals. Low-key, approachable, and worth your Wednesday.</p>
+      <div class="cta-stats">
+        <div class="cta-stat">
+          <span class="cta-stat-num">Apr 29</span>
+          <span class="cta-stat-label">Next Event</span>
+        </div>
+        <div class="cta-stat">
+          <span class="cta-stat-num">No. 38</span>
+          <span class="cta-stat-label">Number Thirty Eight</span>
+        </div>
+        <div class="cta-stat">
+          <span class="cta-stat-num">6–8 PM</span>
+          <span class="cta-stat-label">Every Last Wednesday</span>
+        </div>
+        <div class="cta-stat">
+          <span class="cta-stat-num">🎤</span>
+          <span class="cta-stat-label">New Speaker Monthly</span>
+        </div>
+      </div>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
         <a href="https://www.meetup.com/denver-young-professionals-meetup-group-wdhksqvc/events/313701670/?eventOrigin=group_upcoming_events" target="_blank" rel="noopener" class="btn" style="background:var(--white); color:var(--coral); font-weight:800;">
           Sign Up for April →
@@ -1099,7 +1165,7 @@
     <div class="container">
       <div class="footer-inner">
         <a href="#" style="display:flex;align-items:center;gap:12px;">
-          <img src="assets/logo-1.png" alt="Upward Denver" style="height:48px;width:auto;opacity:0.9;"
+          <img src="assets/logo-1.png" alt="Upward Denver" style="height:68px;width:auto;"
                onerror="this.style.display='none'" />
           <span class="footer-logo-text">Upward <span>Denver</span></span>
         </a>
