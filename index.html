@@ -173,7 +173,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      max-width: 820px;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -226,9 +226,9 @@
     }
     .hero-meta {
       margin-top: 60px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
     .hero-meta-item {
       display: flex;
@@ -816,13 +816,9 @@
         align-items: flex-start;
       }
       .hero-meta {
-        gap: 10px;
-        flex-wrap: wrap;
+        grid-template-columns: 1fr;
         margin-top: 40px;
         margin-bottom: 20px;
-      }
-      .hero-meta-item {
-        width: 100%;
       }
       .event-info { padding: 36px 28px; }
       .speakers-header { flex-direction: column; align-items: flex-start; }
@@ -885,7 +881,7 @@
             <div class="icon">🎤</div>
             <div>
               <strong>Next Guest:</strong>
-              Dustin Evans
+              Dustin Evans, Mortgage &amp; Homebuying Expert
             </div>
           </div>
         </div>
